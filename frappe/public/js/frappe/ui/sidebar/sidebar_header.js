@@ -317,18 +317,22 @@ frappe.ui.SidebarHeader = class SidebarHeader {
 	}
 
 	add_app_item(item) {
+		let icon_html;
+		if (item.icon) {
+			icon_html = frappe.utils.icon(item.icon);
+		} else if (item.icon_html) {
+			icon_html = item.icon_html;
+		} else if (item.icon_url) {
+			icon_html = `<img class="logo" src="${item.icon_url}">`;
+		} else {
+			icon_html = frappe.utils.icon('folder');
+		}
+
 		$(`<div class="dropdown-menu-item" data-name="${item.name}"
 			data-app-route="${item.route}">
 			<a ${item.href ? `href="${item.href}"` : ""}>
 				<div class="sidebar-item-icon">
-					${
-						item.icon
-							? frappe.utils.icon(item.icon)
-							: `<img
-							class="logo"
-							src="${item.icon_url}"
-						>`
-					}
+					${icon_html}
 				</div>
 				<span class="menu-item-title">${item.label}</span>
 			</a>

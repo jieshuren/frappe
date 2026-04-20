@@ -792,7 +792,9 @@ class DesktopIconGrid {
 					let icon = me.icons.find((d) => {
 						return d.icon_title === title;
 					});
-					dataTransfer.setData("text/plain", JSON.stringify(icon.icon_data)); // `dataTransfer` object of HTML5 DragEvent
+					if (icon && icon.icon_data) {
+						dataTransfer.setData("text/plain", JSON.stringify(icon.icon_data)); // `dataTransfer` object of HTML5 DragEvent
+					}
 				},
 				onEnd: function (evt) {
 					if (frappe.desktop_utils.in_folder_creation) return;

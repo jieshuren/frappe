@@ -46,6 +46,7 @@ def get_context(context):
 		{
 			"no_cache": 1,
 			"build_version": frappe.utils.get_build_version(),
+			"dev_server": frappe.local.dev_server,
 			"app_include_js": app_include_js,
 			"app_include_css": app_include_css,
 			"app_include_icons": app_include_icons,
