@@ -123,5 +123,43 @@ def get_next(
 	return None
 
 
+@frappe.whitelist()
+def get_workflow_pending_list():
+	"""获取当前用户的待审批工作流列表"""
+	pending_items = []
+
+	try:
+		workflow_actions = frappe.get_all(
+			"Workflow Action",
+			filters={
+				"user": frappe.session.user,
+				"status": "Open"
+			},
+			fields=["reference_doctype", "reference_name", "name"],
+			limit=50
+		)
+
+		for action in workflow_actions:
+			if action.reference_doctype and action.reference_name:
+				try:
+					doc = frappe.get_doc(action.reference_doctype, action.reference_name)
+					pending_items.append({
+						"name": action.reference_name,
+						"doctype": action.reference_doctype,
+						"title": getattr(doc, "title", None) or getattr(doc, "name", action.reference_name),
+						"status": "Pending",
+						"creation": doc.creation,
+						"modified": doc.modified,
+						"owner": doc.owner,
+					})
+				except Exception:
+					pass
+
+	except Exception:
+		pass
+
+	return pending_items
+
+
 def get_pdf_link(doctype, docname, print_format="Standard", no_letterhead=0):
 	return f"/api/method/frappe.utils.print_format.download_pdf?doctype={doctype}&name={docname}&format={print_format}&no_letterhead={no_letterhead}"
