@@ -75,8 +75,15 @@ def get_permission_query_conditions(user):
 		.where(WorkflowActionPermittedRole.role.isin(roles))
 	).get_sql()
 
-	return f""" `tabWorkflow Action`.`name` in ({permitted_workflow_actions})
+	# AIERP 定制：官方实现仅开放 status=Open 的 Action 给角色匹配用户，
+	# 导致多级审批工作流下，审批人无法反查自己已完成过的审批记录
+	# （"已审批"列表/历史）。此处在保留原有待办权限的同时，额外允许
+	# 审批人读取 completed_by = 自己 的 Action 记录，保证审批流程可完整审计。
+	escaped_user = frappe.db.escape(user)
+	return f""" (
+		`tabWorkflow Action`.`name` in ({permitted_workflow_actions})
 		and `tabWorkflow Action`.`status`='Open'
+	) or `tabWorkflow Action`.`completed_by` = {escaped_user}
 	"""
 
 
