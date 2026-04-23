@@ -29,7 +29,11 @@ export default class ChartWidget extends Widget {
 
 	set_chart_title() {
 		const max_chars = this.widget.width() < 600 ? 40 : 60;
-		this.set_title(max_chars);
+		const title = this.chart_doc?.label || this.label || this.name;
+		this.title_field[0].innerHTML = `<span class="ellipsis" title="${__(title)}">${__(title)}</span>`;
+		if (max_chars) {
+			this.title_field[0].setAttribute("title", this.title || this.label);
+		}
 	}
 
 	set_body() {

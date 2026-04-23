@@ -166,9 +166,14 @@ export default class NumberCardWidget extends Widget {
 		return frappe.dashboard_utils.get_all_filters(this.card_doc);
 	}
 
+	set_title_for_number_card() {
+		const title = this.card_doc?.label || this.label || this.name;
+		this.title_field[0].innerHTML = `<span class="ellipsis" title="${__(title)}">${__(title)}</span>`;
+	}
+
 	async render_card() {
 		this.prepare_actions();
-		this.set_title();
+		this.set_title_for_number_card();
 		this.card_doc?.background_color &&
 			this.widget.css("background-color", this.card_doc.background_color);
 		this.set_loading_state();
