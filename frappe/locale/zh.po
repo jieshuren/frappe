@@ -34668,3 +34668,126 @@ msgstr "返回上传文件"
 #: frappe/custom_scripts/validate_department_project.py:22
 msgid "第 {0} 行：项目 {1} 归属于 {2}，但选择的部门是 {3}，请修改！"
 msgstr "第 {0} 行：项目 {1} 归属于 {2}，但选择的部门是 {3}，请修改！"
+
+msgid "CTA Description"
+msgstr "CTA描述"
+
+msgid "CTA Label"
+msgstr "CTA标签"
+
+msgid "CTA Title"
+msgstr "CTA标题"
+
+msgid "CTA URL"
+msgstr "CTA链接"
+
+msgid "Card 1"
+msgstr "卡片1"
+
+msgid "Card 2"
+msgstr "卡片2"
+
+msgid "Card 3"
+msgstr "卡片3"
+
+msgid "Card 4"
+msgstr "卡片4"
+
+msgid "Card 5"
+msgstr "卡片5"
+
+msgid "Card 6"
+msgstr "卡片6"
+
+msgid "Card 7"
+msgstr "卡片7"
+
+msgid "Card 8"
+msgstr "卡片8"
+
+msgid "Card 9"
+msgstr "卡片9"
+
+msgid "Card Size"
+msgstr "卡片尺寸"
+
+msgid "Embed HTML"
+msgstr "嵌入HTML"
+
+msgid "Image 1"
+msgstr "图片1"
+
+msgid "Image 2"
+msgstr "图片2"
+
+msgid "Image 3"
+msgstr "图片3"
+
+msgid "Image 4"
+msgstr "图片4"
+
+msgid "Image Description"
+msgstr "图片描述"
+
+msgid "Image on Right"
+msgstr "图片在右侧"
+
+msgid "Restrict Image inside Container"
+msgstr "限制图片在容器内"
+
+msgid "Tab 1 Content"
+msgstr "标签页1内容"
+
+msgid "Tab 1 Title"
+msgstr "标签页1标题"
+
+msgid "Tab 2 Content"
+msgstr "标签页2内容"
+
+msgid "Tab 2 Title"
+msgstr "标签页2标题"
+
+msgid "Tab 3 Content"
+msgstr "标签页3内容"
+
+msgid "Tab 3 Title"
+msgstr "标签页3标题"
+
+msgid "Tab 4 Content"
+msgstr "标签页4内容"
+
+msgid "Tab 4 Title"
+msgstr "标签页4标题"
+
+msgid "Tab 5 Content"
+msgstr "标签页5内容"
+
+msgid "Tab 5 Title"
+msgstr "标签页5标题"
+
+msgid "Tab 6 Content"
+msgstr "标签页6内容"
+
+msgid "Tab 6 Title"
+msgstr "标签页6标题"
+
+msgid "Testimonials"
+msgstr "客户评价"
+
+msgid "Videos"
+msgstr "视频"
+
+msgid "YouTube Video ID"
+msgstr "YouTube视频ID"
+
+msgid "member_name"
+msgstr "成员名称"
+
+msgid "Active RQ Worker"
+msgstr "活跃RQ工作进程"
+
+msgid "Scheduled Jobs"
+msgstr "计划任务"
+
+msgid "Total Website Users"
+msgstr "网站用户总数"
