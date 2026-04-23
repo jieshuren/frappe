@@ -35,12 +35,7 @@ frappe.ui.form.ControlLink = class ControlLink extends frappe.ui.form.ControlDat
 		});
 
 		this.$input.on("focus", function () {
-			if (!me.$input.val()) {
-				me.$input.val("");
-				// trigger dropdown immediately
-				me.on_input();
-			}
-
+			me.on_input();
 			me.show_link_and_clear_buttons();
 		});
 		this.$input.on("blur", function () {

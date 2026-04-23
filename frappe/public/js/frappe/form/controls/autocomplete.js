@@ -103,10 +103,7 @@ frappe.ui.form.ControlAutocomplete = class ControlAutoComplete extends frappe.ui
 		});
 
 		this.$input.on("focus", () => {
-			if (!this.$input.val()) {
-				this.$input.val("");
-				this.$input.trigger("input");
-			}
+			this.$input.trigger("input");
 		});
 
 		this.$input.on("blur", () => {
