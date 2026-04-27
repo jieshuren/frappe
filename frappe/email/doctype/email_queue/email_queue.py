@@ -336,16 +336,21 @@ class SendMailContext:
 	def notify_failed_email(self):
 		# Parse the email body to extract the subject
 		subject = Parser(policy=SMTP).parsestr(self.queue_doc.message)["Subject"]
+		previous_lang = getattr(frappe.local, "lang", None)
+		try:
+			frappe.set_user_lang(self.queue_doc.owner)
 
-		# Construct the notification
-		notification = frappe.new_doc("Notification Log")
-		notification.for_user = self.queue_doc.owner
-		notification.set("type", "Alert")
-		notification.from_user = self.queue_doc.owner
-		notification.document_type = self.queue_doc.doctype
-		notification.document_name = self.queue_doc.name
-		notification.subject = _("Failed to send email with subject:") + f" {subject}"
-		notification.insert()
+			# Construct the notification
+			notification = frappe.new_doc("Notification Log")
+			notification.for_user = self.queue_doc.owner
+			notification.set("type", "Alert")
+			notification.from_user = self.queue_doc.owner
+			notification.document_type = self.queue_doc.doctype
+			notification.document_name = self.queue_doc.name
+			notification.subject = _("Failed to send email with subject:") + f" {subject}"
+			notification.insert()
+		finally:
+			frappe.local.lang = previous_lang
 
 	def update_recipient_status_to_sent(self, recipient):
 		self.sent_to_atleast_one_recipient = True
